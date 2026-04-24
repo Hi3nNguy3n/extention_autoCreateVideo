@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "Fpoly Auto Create Video Extension",
+  "version": "1.0.0",
+  "description": "Chrome Extension for Fpoly Auto Create Video (Google Labs VideoFX automation)",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "downloads",
+    "scripting",
+    "sidePanel",
+    "alarms"
+  ],
+  "host_permissions": [
+    "*://labs.google.com/*",
+    "*://labs.google/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/content.ts-BLRQ994W.js"
+      ],
+      "matches": [
+        "*://labs.google.com/*",
+        "*://labs.google/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Open Side Panel"
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "ffmpeg/*",
+        "assets/*"
+      ],
+      "use_dynamic_url": false
+    },
+    {
+      "matches": [
+        "*://labs.google.com/*",
+        "*://labs.google/*"
+      ],
+      "resources": [
+        "assets/content.ts-BLRQ994W.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ],
+  "cross_origin_embedder_policy": {
+    "value": "require-corp"
+  },
+  "cross_origin_opener_policy": {
+    "value": "same-origin"
+  }
+}
